@@ -12,15 +12,49 @@ function getComputerChoice() {
     return choices[computerSelection];
 }
 
-// Play a single round of the game
-function playGame(playerSelection, computerSelection) {
+// Create a function to get player's input
+function getPlayerChoice() {
 
-    // Compare player and computer selections
-    
+    let playerSelection = prompt("Type your choice:", "Rock, Paper, or Scissors?");
+    return playerSelection.toLowerCase();
+
 }
 
-// Declare player selection
-const playerSelection = "rock";
+// Play a single round of the game
+function playGame(player, comp) {
 
-// Calls the playGame() function with arguments
-console.log(playGame(playerSelection,getComputerChoice()))
+    // Compare player and computer selections
+    if ((player == "rock" && comp == "scissors") || (player == "paper" && comp == "rock") || (player =="scissors" && comp == "paper")) {
+        playerPoints += 1;
+        return `You win, ${player} beats ${comp}`;
+    }
+    else if (player == comp) {
+        return "Draw";
+    }
+    else {
+        computerPoints += 1;
+        return `You lose, ${comp} beats ${player}`;
+    }
+        
+}
+
+// Play the game n amount of times
+function game(n) {
+    for (let i=0; i < n; i++) {
+        console.log(playGame(getPlayerChoice(),getComputerChoice()))
+    }
+    console.log(winner(playerPoints, computerPoints))
+}
+
+// Determine the winner
+function winner(player, comp) {
+    if (player == comp) return "Winner: Draw";
+    else if (player > comp) return "Winner: Player";
+    else return "Winner: Computer"
+}
+
+let playerPoints = 0;
+let computerPoints = 0;
+
+// Calls the game function with a prompt as the argument
+game(Number(prompt("Number of Rounds:")))
