@@ -1,0 +1,26 @@
+
+.flex-container {
+
+    display: flex;
+    padding: 1em;
+}
+
+.main {
+
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+}
+
+button {
+    padding: 1em 2em 1em 2em;
+}
+
+.results {
+    justify-content: center;
+    gap: 5em;
+}
+
+.points {
+    padding-left: 1em;
+}
