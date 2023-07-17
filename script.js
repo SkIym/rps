@@ -50,6 +50,7 @@ function winner(player, comp) {
 let playerPoints = 0;
 let computerPoints = 0;
 
+
 const selection = document.querySelectorAll('button');
 let player = document.querySelector(".player-points")
 let computer = document.querySelector(".comp-points")
@@ -63,6 +64,11 @@ selection.forEach((btn) => {
         recap.textContent = playGame(btn.value, getComputerChoice())
         player.textContent = playerPoints;
         computer.textContent = computerPoints;
+
+        // Little feature
+        const randomColor = "#"+((1<<24)*Math.random()|0).toString(16); 
+        document.querySelector('body').style.backgroundColor = randomColor;
+
         if (playerPoints == 5 || computerPoints == 5){
             recap.textContent = winner(playerPoints, computerPoints);
             playerPoints = 0;
